@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!--WebPage Title-->
+    <title>Mission 4 Assignment</title>
+
+    <!--website icon-->
+    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzb1_D7BLNyzG2Ez9iVUfe8PvQnW4kKA5B-A&usqp=CAU">
+
+    <!--bootstrap & css-->
+    <link href="lib/bootstrap/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/default.css" rel="stylesheet" />
+</head>
+<body>
+    <!--Header of my preferred name-->
+    <h1>Ellie Ward</h1>
+
+    <!--picture doing something I enjoy-->
+    <img src="img/Screenshot 2023-01-30 111748.jpg" />
+
+    <!--paragraph on what I hope to get out of IS 413-->
+    <p>Programming has never been my strongsuit. Since starting a strongly typed language, I'm realizing I may like it more. I love the setup and how much there is to help you code. I hope to gain a solid understanding of strongly typed language to prepare me for a summer internship. I would also like to be able to start little projects on my own!</p>
+
+    <!--top 3 jobs-->
+    <h3>Top 3 Job Interests:</h3>
+    <ol>
+        <li>Data Scientist</li>
+        <li>Project Manager</li>
+        <li>AI Developer</li>
+    </ol>
+
+    <!--Grade Calculator Form-->
+    <!-- clarify this? Not calculate the letter grade, do an average grade percentage?? What does that mean? -->
+    <form>
+        <label>Assignments Score:</label>&emsp;
+        <input id="assignments" /><br />
+        <label>Group Project Score:</label>&emsp;
+        <input id="groupProject" /><br />
+        <label>Quizzes Score:</label>&emsp;
+        <input id="quizzes" /><br />
+        <label>Midterm Exam Score:</label>&emsp;
+        <input id="midterm" /><br />
+        <label>Final Exam Score:</label>&emsp;
+        <input id="final" /><br />
+        <label>INTEX Score:</label>&emsp;
+        <input id="intex" /><br />
+        <input id="calculateGrade" type="button" value="Calculate Grade" />
+    </form>
+    <!--print the output letter grade here from js function-->
+    <p id="gradeOutput" style="font-weight: bold"></p>
+
+    <script src="lib/jquery/jquery-3.6.3.min.js"></script>
+    <script src="js/gradeCalculator.js"></script>
+</body>
+</html>
