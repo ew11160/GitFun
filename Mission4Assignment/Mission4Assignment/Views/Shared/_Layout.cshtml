@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!--WebPage Title-->
+    <title>@ViewData["Title"]</title>
+
+    <!--website icon-->
+    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzb1_D7BLNyzG2Ez9iVUfe8PvQnW4kKA5B-A&usqp=CAU">
+
+    <!--bootstrap & css-->
+    <link href="lib/bootstrap/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/default.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <nav>
+        <a asp-controller="Main" asp-action="Index">Home</a>
+        <a asp-controller="Main" asp-action="Calculator">Calculate Grade</a>
+    </nav>
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <script src="lib/jquery/jquery-3.6.3.min.js"></script>
+
+</body>
+</html>

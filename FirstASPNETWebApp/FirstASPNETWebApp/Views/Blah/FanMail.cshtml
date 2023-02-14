@@ -1,0 +1,23 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model FanMailModel;
+
+<h2>Send Him Fan Mail</h2>
+<form method="post">
+    <label>From:</label>
+    <input id="txtFrom" asp-for="From" /><br />
+    <label>Subject:</label>
+    <input id="txtSubject" asp-for="Subject" /><br />
+    <label>Message:</label>
+    <textarea id="txtMessage" asp-for="Message" rows="4"></textarea><br />
+    <input id="btnSend" type="submit" value="Send Message" />
+
+    <!--add this summary to report to user if their form was filled out correctly-->
+    <div asp-validation-summary="All"></div>
+</form>
+
+<script src="js/FanMail.js"></script>

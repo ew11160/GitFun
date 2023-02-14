@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Application Submitted";
+}
+
+@model DateMe.Models.ApplicationResponse
+
+@if (Model.CreeperStalker == true)
+{
+    <h2>My bad, I forgot that I'm already in a relationship. But I have a friend who I think would be perfet for you.</h2>
+    // Insert worst enemy's phone number here
+}
+else
+{
+    <!--@Model references our model we brought in -->
+    <h2>Application received. Thank you, @Model.FirstName.</h2>
+    <h3>Can't wait for our date</h3>
+}

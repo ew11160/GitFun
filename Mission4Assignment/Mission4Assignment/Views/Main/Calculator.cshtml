@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Grade Calculator";
+}
+@model gradeCalculatorModel;
+
+<!--Grade Calculator Form-->
+<!-- clarify this? Not calculate the letter grade, do an average grade percentage?? What does that mean? -->
+<h2>Calculate your grade</h2>
+<form method="POST">
+    <label>Assignments Score:</label>&emsp;
+    <input id="assignments" asp-for="assignments" /><br />
+    <label>Group Project Score:</label>&emsp;
+    <input id="groupProject" asp-for="groupProject" /><br />
+    <label>Quizzes Score:</label>&emsp;
+    <input id="quizzes" asp-for="quizzes" /><br />
+    <label>Midterm Exam Score:</label>&emsp;
+    <input id="midterm" asp-for="midterm" /><br />
+    <label>Final Exam Score:</label>&emsp;
+    <input id="final" asp-for="final" /><br />
+    <label>INTEX Score:</label>&emsp;
+    <input id="intex" asp-for="intex" /><br />
+    <input id="calculateGrade" type="submit" value="Calculate Grade" />
+    <div asp-validation-summary="All"></div>
+</form>
+<!--print the output letter grade here from js function-->
+<p id="gradeOutput" style="font-weight: bold"></p>
+
+<script src="js/gradeCalculator.js"></script>

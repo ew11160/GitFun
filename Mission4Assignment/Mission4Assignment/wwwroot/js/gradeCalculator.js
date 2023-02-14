@@ -31,5 +31,5 @@ $("#calculateGrade").click(function () {
     } else {
         grade = "E"
     };
-    $("#gradeOutput").html("Your grade is " + grade + " with " + percentage + "%");
+    alert("Your grade is " + grade + " with " + percentage + "%");
 })
