@@ -17,15 +17,29 @@ namespace Mission06_ea11160.Models
         }
 
         public DbSet<MovieEntryModel> MovieEntries { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            mb.Entity<Category>().HasData(
+                
+                new Category { CategoryID = 1, CategoryName = "Action"},
+                new Category { CategoryID = 2, CategoryName = "Adventure" },
+                new Category { CategoryID = 3, CategoryName = "Comedy"},
+                new Category { CategoryID = 4, CategoryName = "Drama" },
+                new Category { CategoryID = 5, CategoryName = "Fantasy" },
+                new Category { CategoryID = 6, CategoryName = "Mystery"},
+                new Category { CategoryID = 7, CategoryName = "Romance" },
+                new Category { CategoryID = 8, CategoryName = "Sports" },
+                new Category { CategoryID = 9, CategoryName = "Western"}
+                );
+
             mb.Entity<MovieEntryModel>().HasData(
                     
                     new MovieEntryModel
                     {
                         MovieID = 1,
-                        Category = "Rom-Com",
+                        CategoryID = 7,
                         Title = "Your Place Or Mine",
                         Year = 2023,
                         Director = "Netflix",
@@ -37,7 +51,7 @@ namespace Mission06_ea11160.Models
                     new MovieEntryModel
                     {
                         MovieID = 2,
-                        Category = "Action",
+                        CategoryID = 1,
                         Title = "The Hunt for Red October",
                         Year = 1990,
                         Director = "John McTiernan",
@@ -49,7 +63,7 @@ namespace Mission06_ea11160.Models
                     new MovieEntryModel
                     {
                         MovieID = 3,
-                        Category = "Animated",
+                        CategoryID = 2,
                         Title = "Pocahontas",
                         Year = 1995,
                         Director = "Disney",

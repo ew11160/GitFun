@@ -12,10 +12,17 @@ namespace DateMe.Models
         [Required]
         public int ApplicationID { get; set; }
         public string FirstName { get; set; }
+        // validation in the controller (check if valid) then validation summary on html page
+        [Required(ErrorMessage ="Hey, you fool! You need to enter a last name")]
         public string LastName { get; set; }
         public byte Age { get; set; }
+        [Required]
+        [Phone]
         public string Phone { get; set; }
-        public string Major { get; set; }
         public bool CreeperStalker { get; set; }
+
+        // Build Foreign Key Relationship
+        public int MajorId { get; set; }
+        public Major Major { get; set; }
     }
 }

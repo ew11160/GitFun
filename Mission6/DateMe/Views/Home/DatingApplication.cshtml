@@ -8,6 +8,9 @@
 
 <div>
     <form method="post">
+
+        <div asp-validation-summary="All"></div>
+
         <label asp-for="FirstName">First Name:</label>
         <input asp-for="FirstName" />
         <br />
@@ -20,8 +23,15 @@
         <label asp-for="Phone">Phone:</label>
         <input asp-for="Phone" />
         <br />
-        <label asp-for="Major">Major:</label>
-        <input asp-for="Major" />
+        <label asp-for="MajorId">Major:</label>
+        <select asp-for="MajorId">
+            <option value="">Select a Major</option>
+            <!--go through all the Major options, but save the id, not the name!-->
+            @foreach (Major m in ViewBag.Majors)
+            {
+                <option value="@m.MajorId">@m.MajorName</option>
+            }
+        </select>
         <br />
         <label asp-for="CreeperStalker"></label>
         <select asp-for="CreeperStalker">
@@ -32,3 +42,8 @@
         <button type="submit">Submit Application</button>
     </form>
 </div>
+
+<!--I don't want to create duplicate records rather than updating a record,
+    to fix this you need to pass the id, on the form add an input field id,
+    give it a property where they can't edit it, or make it type="hidden",
+    return View("AddMovie", new Movie());-->

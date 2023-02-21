@@ -15,15 +15,75 @@ namespace Mission06_ea11160.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.32");
 
+            modelBuilder.Entity("Mission06_ea11160.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoryID");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryID = 1,
+                            CategoryName = "Action"
+                        },
+                        new
+                        {
+                            CategoryID = 2,
+                            CategoryName = "Adventure"
+                        },
+                        new
+                        {
+                            CategoryID = 3,
+                            CategoryName = "Comedy"
+                        },
+                        new
+                        {
+                            CategoryID = 4,
+                            CategoryName = "Drama"
+                        },
+                        new
+                        {
+                            CategoryID = 5,
+                            CategoryName = "Fantasy"
+                        },
+                        new
+                        {
+                            CategoryID = 6,
+                            CategoryName = "Mystery"
+                        },
+                        new
+                        {
+                            CategoryID = 7,
+                            CategoryName = "Romance"
+                        },
+                        new
+                        {
+                            CategoryID = 8,
+                            CategoryName = "Sports"
+                        },
+                        new
+                        {
+                            CategoryID = 9,
+                            CategoryName = "Western"
+                        });
+                });
+
             modelBuilder.Entity("Mission06_ea11160.Models.MovieEntryModel", b =>
                 {
                     b.Property<int>("MovieID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Director")
                         .IsRequired()
@@ -52,13 +112,15 @@ namespace Mission06_ea11160.Migrations
 
                     b.HasKey("MovieID");
 
+                    b.HasIndex("CategoryID");
+
                     b.ToTable("MovieEntries");
 
                     b.HasData(
                         new
                         {
                             MovieID = 1,
-                            Category = "Rom-Com",
+                            CategoryID = 7,
                             Director = "Netflix",
                             Edited = false,
                             LentTo = "",
@@ -70,7 +132,7 @@ namespace Mission06_ea11160.Migrations
                         new
                         {
                             MovieID = 2,
-                            Category = "Action",
+                            CategoryID = 1,
                             Director = "John McTiernan",
                             Edited = false,
                             LentTo = "",
@@ -82,7 +144,7 @@ namespace Mission06_ea11160.Migrations
                         new
                         {
                             MovieID = 3,
-                            Category = "Animated",
+                            CategoryID = 2,
                             Director = "Disney",
                             Edited = true,
                             LentTo = "Rosey",
@@ -91,6 +153,15 @@ namespace Mission06_ea11160.Migrations
                             Title = "Pocahontas",
                             Year = 1995
                         });
+                });
+
+            modelBuilder.Entity("Mission06_ea11160.Models.MovieEntryModel", b =>
+                {
+                    b.HasOne("Mission06_ea11160.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

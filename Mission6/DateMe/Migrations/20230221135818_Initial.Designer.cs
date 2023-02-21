@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DateMe.Migrations
 {
     [DbContext(typeof(DateApplicationContext))]
-    [Migration("20230213202427_Initial")]
+    [Migration("20230221135818_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,13 +35,15 @@ namespace DateMe.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Major")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("MajorId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Phone")
                         .HasColumnType("TEXT");
 
                     b.HasKey("ApplicationID");
+
+                    b.HasIndex("MajorId");
 
                     b.ToTable("Responses");
 
@@ -53,7 +55,7 @@ namespace DateMe.Migrations
                             CreeperStalker = false,
                             FirstName = "Michael",
                             LastName = "Scott",
-                            Major = "Sales",
+                            MajorId = 4,
                             Phone = "555-555-1234"
                         },
                         new
@@ -63,9 +65,59 @@ namespace DateMe.Migrations
                             CreeperStalker = true,
                             FirstName = "Creed",
                             LastName = "Bratton",
-                            Major = "Undeclared",
+                            MajorId = 5,
                             Phone = "555-123-555"
                         });
+                });
+
+            modelBuilder.Entity("DateMe.Models.Major", b =>
+                {
+                    b.Property<int>("MajorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("MajorName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("MajorId");
+
+                    b.ToTable("Majors");
+
+                    b.HasData(
+                        new
+                        {
+                            MajorId = 1,
+                            MajorName = "Information Systems"
+                        },
+                        new
+                        {
+                            MajorId = 2,
+                            MajorName = "Ancient Near Eastern Studies: Greek New Testament"
+                        },
+                        new
+                        {
+                            MajorId = 3,
+                            MajorName = "Accounting"
+                        },
+                        new
+                        {
+                            MajorId = 4,
+                            MajorName = "Actuarial Science"
+                        },
+                        new
+                        {
+                            MajorId = 5,
+                            MajorName = "Undeclared"
+                        });
+                });
+
+            modelBuilder.Entity("DateMe.Models.ApplicationResponse", b =>
+                {
+                    b.HasOne("DateMe.Models.Major", "Major")
+                        .WithMany()
+                        .HasForeignKey("MajorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
